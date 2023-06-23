@@ -155,6 +155,8 @@ spec:
               {{- include "common.tplvalues.render" ( dict "value" .Values.backstage.extraVolumeMounts "context" $ ) | nindent 12 }}
             {{- end }}
           {{- end }}
+        - name: mkdocs
+          image: spotify/techdocs:latest
         {{- if .Values.backstage.extraContainers }}
         {{- include "common.tplvalues.render" ( dict "value" .Values.backstage.extraContainers "context" $) | nindent 8 }}
         {{- end }}

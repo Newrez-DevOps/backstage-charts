@@ -1,5 +1,14 @@
 # Backstage Helm Chart
 
+> NewRez Chart Adoption Notes: This repo is forked from the [official backstage chart repo](https://github.com/backstage/charts). We added mkdocs container to the deployment so that the mkdocs container resides in the same pod as the backstage container, allowing us to set generator to `local` instead of `docker` to avoid DID situation. The updated chart is packaged and pushed to JFrog Artifactory:
+```bash
+cd charts/backstage
+helm dependency update
+helm package .
+curl -uadmin:cmVmdGtuOjAxOjE3MTkwMTQyNzE6clZLclVTbmY0YTRzNWlUaHhjWjVZQWZWYnZz -T ./backstage-1.1.2.tgz "https://artifactory.awsk8snonprod.newrez.cloud/artifactory/devops-dev-helm/backstage-1.1.2.tgz"
+```
+> Note: Below are official Backstage chart README contents.
+
 [Backstage](https://backstage.io) is an open platform for building developer portals. Powered by a centralized software catalog, Backstage restores order to your microservices and infrastructure and enables your product teams to ship high-quality code quickly — without compromising autonomy.
 
 Backstage unifies all your infrastructure tooling, services, and documentation to create a streamlined development environment from end to end.
